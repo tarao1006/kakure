@@ -67,7 +67,7 @@ class SubmittedMessage:
             return 100
         if self.check_error(s):
             return -1
-        if (len(s) in [1,2] and not re.match('^\d{2}.?\d{0,2}-\d{2}.?\d{0,2}$', replace_time_display(s[0]))):
+        if all(re.match('^\d+$',i) for i in s):
             return 3
         if self.check_int_or_not(s[0]):
             if self.check_int_or_not(s[1]):
