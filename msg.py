@@ -1,4 +1,5 @@
 import re
+import math
 
 class SubmittedMessage:
 
@@ -35,8 +36,8 @@ class SubmittedMessage:
                 self.contents = submitted_message[2:]
             self.days = len(self.contents)
             self.base_time, self.night_time = self.calculate_separete_time()
-            self.base_income = int(self.wage * self.base_time)
-            self.night_income = int(int(self.wage * 1.25) * self.night_time)
+            self.base_income = math.ceil(self.wage * self.base_time)
+            self.night_income = math.ceil(int(self.wage * 1.25) * self.night_time)
             self.income = self.base_income + self.night_income
             self.dinner = 200 * (self.days - self.nodinner)
             if self.dinner<0:
